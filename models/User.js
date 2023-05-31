@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
-const postSchema = mongoose.Schema(
+
+const userSchema = mongoose.Schema(
   {
-    content: {
+    Username: {
       type: String,
-      required: true,
+      require: true,
+      max: 45,
     },
-    user_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
+    password: {
+      type: String,
+      require: true,
+      min: 6,
+      max: 255,
     },
     created_date: {
       type: Date,
@@ -24,4 +27,4 @@ const postSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Post", postSchema, "post");
+module.exports = mongoose.model("User", userSchema, "user");
